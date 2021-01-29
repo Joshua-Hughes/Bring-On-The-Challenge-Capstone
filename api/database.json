@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Joshua",
+      "username": "Highwind",
+      "email": "Biggie@Cheeese.gov"
+    },
+    {
+      "email": "FiveGuys@BurgersAndFries.grill",
+      "name": "Gho Getter",
+      "username": "MiddelMan",
+      "id": 2
+    }
+  ]
+}
