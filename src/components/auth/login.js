@@ -34,8 +34,7 @@ export const Login = props => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <a src='Capture.PNG' alt="Logo"></a>
-                    <h2>Sign In</h2>
+                    <h2 className="header">Sign In</h2>
                     <fieldset>
                         <label htmlFor="inputUsername">Username</label>
                         <input ref={username} type="username"
