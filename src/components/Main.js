@@ -1,6 +1,6 @@
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
-import { ApplicationViews } from "./applicationView"
+import { ApplicationViews } from "./ApplicationView"
 import { Login } from "./auth/login"
 import { Register } from "./auth/register"
 
@@ -15,12 +15,12 @@ export const MainPage = () => (
               </>
             );
           } else {
-            return <Redirect to="/login" />;
+            return <Redirect to="/" />;
           }
         }}
       />
   
-      <Route path="/login">
+      <Route exact path="/">
         <Login />
       </Route>
       <Route path="/register">

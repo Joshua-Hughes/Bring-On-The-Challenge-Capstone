@@ -6,7 +6,7 @@ import { GamesList } from "./searchPage/GamesList"
 export const ApplicationViews = () => {
     return (
         <ListProvider>
-            <Route exact path="/gameSearch">
+            <Route path="/games">
                 <GamesList />
             </Route>
         </ListProvider>

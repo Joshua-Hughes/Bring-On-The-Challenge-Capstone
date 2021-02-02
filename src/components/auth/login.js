@@ -19,7 +19,7 @@ export const Login = props => {
             .then(exists => {
                 if (exists) {
                     sessionStorage.setItem("site_user", exists.id)
-                    history.push("/")
+                    history.push("/games")
                 } else {
                     existsDialog.current.showModal()
                 }

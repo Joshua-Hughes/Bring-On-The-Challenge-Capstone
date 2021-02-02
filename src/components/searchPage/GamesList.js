@@ -3,7 +3,9 @@ import { ListContext } from "./GameListProvider"
 import { GameCard } from "./GameCard"
 
 export const GamesList = () => {
-  const { games, getGamesList } = useContext(ListContext)
+
+  const { games, getGamesList, nextList, prevList } = useContext(ListContext)
+
 
   useEffect(() => {
     getGamesList()
@@ -14,10 +16,17 @@ export const GamesList = () => {
   return (
     <div className="games">
       {
-        games.map(game => {
+        games.results?.map(game => {
           return <GameCard key={game.id} game={game} />
         })
       }
+      <button className="nextPage" onClick={ nextList }>
+        Next Page
+      </button>
+
+      <button className="prevPage" onClick={ prevList }>
+        Previous Page
+      </button>
     </div>
   )
 }
