@@ -1,40 +1,53 @@
 import React, { useState, createContext } from "react"
 import { settings } from '../../Settings.js';
 
-export const ListContext = createContext()
+export const GameContext = createContext()
 
 
 
-export const ListProvider = (props) => {
-    let [games, setGamesList] = useState([])
+export const GamesProvider = (props) => {
+    let [games, setGames] = useState([])
 
-    const getGamesList = () => {
+    const getGames = () => {
         return fetch(`https://api.rawg.io/api/games?key=${settings.rawgKey}`)
             .then(response => response.json())
-            .then(setGamesList)
+            .then(setGames)
     }
+    
     const getGameById = (id) => {
         return fetch(`https://api.rawg.io/api/games/${id}?key=${settings.rawgKey}`)
             .then(response => response.json())
     }
 
     const nextList = () => {
+        if (games.next !== null) {
         fetch(`${games?.next}`)
             .then(response => response.json())
-            .then(setGamesList)
+            .then(setGames)
+        }
     }
 
     const prevList = () => {
+        if (games.previous !== null) {
         fetch(`${games?.previous}`)
             .then(response => response.json())
-            .then(setGamesList)
+            .then(setGames)
+        }
     }
 
+    const searchList = (term) => {
+        if (term != "") {
+          return fetch(`https://api.rawg.io/api/games?search=${term}&key=${settings.rawgKey}`)
+            .then(response => response.json())
+            .then(setGames)
+        }
+      }
+
     return (
-        <ListContext.Provider value={{
-            games, getGamesList, getGameById, nextList, prevList
+        <GameContext.Provider value={{
+            games, getGames, getGameById, nextList, prevList, searchList
         }}>
             {props.children}
-        </ListContext.Provider>
+        </GameContext.Provider>
     )
 }

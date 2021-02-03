@@ -1,14 +1,19 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { ListProvider } from "./searchPage/GameListProvider"
-import { GamesList } from "./searchPage/GamesList"
+import { GamesProvider } from "./SearchPage/GameListProvider"
+import { GamesList } from "./SearchPage/GamesList"
+import { GameDetails } from "./SearchPage/GameDetails"
 
 export const ApplicationViews = () => {
     return (
-        <ListProvider>
+        <GamesProvider>
             <Route path="/games">
                 <GamesList />
             </Route>
-        </ListProvider>
+
+            <Route path="/game-:gameId(\d+)">
+                <GameDetails />
+            </Route>
+        </GamesProvider>
     )
 }
