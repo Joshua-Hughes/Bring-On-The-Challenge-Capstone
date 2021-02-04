@@ -12,5 +12,41 @@
       "username": "MiddelMan",
       "id": 2
     }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "userId": 2,
+      "gameId": 52936,
+      "ratingId": 5,
+      "title": "Defeat Warmech",
+      "description": "The Warmech can be found on the top floor of The Floating Castle. He is a rare encounter found right outside the door holding Tiamat."
+    }
+  ],
+  "ratings": [
+    {
+      "id": 1,
+      "rank": "Simple"
+    },
+    {
+      "id": 2,
+      "rank": "Easy"
+    },
+    {
+      "id": 3,
+      "rank": "Moderate"
+    },
+    {
+      "id": 4,
+      "rank": "Challenging"
+    },
+    {
+      "id": 5,
+      "rank": "Very Difficult"
+    },
+    {
+      "id": 6,
+      "rank": "Impossible"
+    }
   ]
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { GameContext } from "./GameListProvider"
+import { GameContext } from "./GamesProvider"
 import { GameCard } from "./GameCard"
 
 export const GamesList = () => {
