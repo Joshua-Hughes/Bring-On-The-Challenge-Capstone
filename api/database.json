@@ -17,10 +17,56 @@
     {
       "id": 1,
       "userId": 2,
+      "gameId": 2551,
+      "game": "Dark Souls III",
+      "ratingId": 3,
+      "title": "Lord of Cinder: Yhorm the Giant",
+      "description": "Defeat Yhorm the Giant, Lord of Cinder."
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "gameId": 3332,
+      "game": "FINAL FANTASY X/X-2 HD Remaster",
+      "ratingId": 4,
+      "title": "Midway Through",
+      "description": "Reach the 40th floor of Iutycyr Tower and defeat the boss"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "gameId": 2310,
+      "game": "Mighty No. 9",
+      "ratingId": 4,
+      "title": "7 Golden Letters",
+      "description": "Complete any stage with a 100% absorption rate."
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "gameId": 5390,
+      "game": "Burnout Paradise",
+      "ratingId": 2,
+      "title": "The Gang is Back in Town",
+      "description": "Be on the winning robbers team in a Cops and Robbers Game."
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "gameId": 5390,
+      "game": "Burnout Paradise",
+      "ratingId": 1,
+      "title": "Spinnin' Around",
+      "description": "Perform a 360 Flatspin in any car"
+    },
+    {
+      "id": 6,
+      "userId": 1,
       "gameId": 52936,
-      "ratingId": 5,
+      "game": "Final Fantasy (1987)",
       "title": "Defeat Warmech",
-      "description": "The Warmech can be found on the top floor of The Floating Castle. He is a rare encounter found right outside the door holding Tiamat."
+      "ratingId": 5,
+      "description": "Warmech can be found on the top floor of the Floating Castle, just before you find Tiamat."
     }
   ],
   "ratings": [
@@ -47,6 +93,20 @@
     {
       "id": 6,
       "rank": "Impossible"
+    }
+  ],
+  "savedChallenges": [
+    {
+      "userId": 2,
+      "challengeId": 6,
+      "isComplete": false,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "challengeId": 4,
+      "isComplete": false,
+      "id": 1
     }
   ]
 }
