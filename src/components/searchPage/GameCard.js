@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+//displays each game passed through with a link to a details page
 export const GameCard = ({ game }) => {
     return (
         <section className="game">

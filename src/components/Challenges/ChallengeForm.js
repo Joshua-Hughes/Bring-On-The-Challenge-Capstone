@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useState, useRef } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { GameContext } from "../SearchPage/GamesProvider"
 import { ChallengeContext } from "./ChallengeProvider"
 import { useParams } from 'react-router-dom'
 
-const refreshPage = () => {
-    window.location.reload(false)
-}
-
+//Renders the form for submitting challenges
 export const ChallengeForm = () => {
     const { addChallenge, getRatings } = useContext(ChallengeContext)
 
     const { getGameById } = useContext(GameContext)
 
-
+    //sets the default state of the form
     const [challenge, setChallenge] = useState({
         id: 0,
         userId: 0,
@@ -21,6 +18,7 @@ export const ChallengeForm = () => {
         description: ""
     })
 
+    //sets the default state of the game information needing to be saved, as well.
     const [games, setGame] = useState({
         gameId: 0,
         game: "",
@@ -32,12 +30,14 @@ export const ChallengeForm = () => {
 
     const { gameId } = useParams()
 
+    //handles the state change when typing
     const handleControlledInputChange = (event) => {
         const newChallenge = { ...challenge }
         newChallenge[event.target.name] = event.target.value
         setChallenge(newChallenge)
     }
 
+    //handles the saving of challenges
     const handleSaveChallenge = () => {
         if (challenge.title === "" || challenge.ratingId === 0 || challenge.description === "") {
             window.alert("Please fill in all fields.")
@@ -52,10 +52,14 @@ export const ChallengeForm = () => {
                 ratingId: parseInt(challenge.ratingId),
                 description: challenge.description
             })
-                .then(refreshPage())
+                .then(window.alert("Challenge saved, why not another?"))
+                .then(challenge.title = "")
+                .then(challenge.ratingId = 0)
+                .then(challenge.description = "")
         }
     }
 
+    //fetches the currently viewed game and the list of ratings
     useEffect(() => {
         getGameById(gameId)
             .then((response) => {
@@ -65,16 +69,14 @@ export const ChallengeForm = () => {
             })
     }, [])
 
+    //renders the form
     return (
         <form className="challengeForm">
             <h2 className="challengeForm__title">{challengeId ? "Edit Challenge" : "Add Challenge"}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="challengeTitle">Title </label>
-                    <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control"
-                        placeholder="Title"
-                        onChange={handleControlledInputChange}
-                        value={challenge.title} />
+                    <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control" placeholder="Title" onChange={handleControlledInputChange} value={challenge.title}/>
                 </div>
             </fieldset>
 
@@ -94,7 +96,7 @@ export const ChallengeForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description} />
+                    <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description}  />
                 </div>
             </fieldset>
             <button className="btn btn-primary"

@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
-
+//Renders the registration page
 export const Register = (props) => {
     const name = useRef()
     const username = useRef()
@@ -8,12 +8,14 @@ export const Register = (props) => {
     const conflictDialog = useRef()
     const history = useHistory()
 
+    //Checks for an existing user.
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?username=${username.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
 
+    //If username does not exist in the database, enter the information given into the database and push the new user through.
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -47,6 +49,7 @@ export const Register = (props) => {
 
     }
 
+    //render registration form
     return (
         <main style={{ textAlign: "center" }}>
 

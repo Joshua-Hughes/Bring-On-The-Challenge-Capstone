@@ -3,19 +3,19 @@ import { ChallengeContext } from "./ChallengeProvider"
 import { SavedChallengeContext } from "./SavedChallengeProvider"
 
 
-
+//Renders a card for each existing challenge per game
 export const ChallengeCard = ({ challenge, game }) => {
 
     const { deleteChallenge } = useContext(ChallengeContext)
 
     const { saveChallenge } = useContext(SavedChallengeContext)
 
-    const savedSuccess = useRef()
-
+    //handles the deleting of challenges
     const handleChallengeDelete = () => {
         deleteChallenge(challenge.id)
     }
 
+    //handles the saving of challenges
     const handleChallengeSave = () => {
         {
             saveChallenge({
@@ -28,13 +28,11 @@ export const ChallengeCard = ({ challenge, game }) => {
 
     }
 
+    //if the challenge belongs to the currently viewed game, render the card.
+    //if the challenge belongs to the currently active user, render with a delete button.
     if (challenge.gameId === game.id && parseInt(sessionStorage.site_user) === challenge.user.id) {
         return (
             <section className="challenge">
-                <dialog className="dialog dialog--auth" ref={savedSuccess}>
-                    <div>Challenge Saved!</div>
-                    <button className="button--close" onClick={e => savedSuccess.current.close()}>Close</button>
-                </dialog>
                 <h3 className="challenge__title">{challenge.title}</h3>
                 <div className="challenge__rating"> Difficulty: {challenge.rating.rank}</div>
                 <div className="challenge__poster"> Posted By: {challenge.user.username}</div>
@@ -46,10 +44,6 @@ export const ChallengeCard = ({ challenge, game }) => {
     } else if (challenge?.gameId === game?.id) {
         return (
             <section className="challenge">
-                <dialog className="dialog dialog--auth" ref={savedSuccess}>
-                    <div>Challenge Saved!</div>
-                    <button className="button--close" onClick={e => savedSuccess.current.close()}>Close</button>
-                </dialog>
                 <h3 className="challenge__title">{challenge.title}</h3>
                 <div className="challenge__rating"> Difficulty: {challenge.rating.rank}</div>
                 <div className="challenge__poster"> Posted By: {challenge.user.username}</div>

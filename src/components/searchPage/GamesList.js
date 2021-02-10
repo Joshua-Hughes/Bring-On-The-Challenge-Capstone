@@ -11,15 +11,17 @@ export const GamesList = () => {
     name: ""
   });
 
+  //fetches the list of games
   useEffect(() => {
     getGames()
 
   }, [])
 
+  //scrolls to the top of the page when the next or previous page buttons are clicked
   const scrollToRef = (ref) =>
     window.scrollTo(0, ref.current)
 
-
+    //handles the search fuction for the list of games
   const handleClickSearchList = (event) => {
     event.preventDefault()
 
@@ -34,6 +36,7 @@ export const GamesList = () => {
     }
   }
 
+  //renders the list of games
   return (
     <div className="games">
       <Link to={`/userPage`}>

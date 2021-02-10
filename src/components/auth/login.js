@@ -2,16 +2,20 @@ import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 
+//Renders Log-in Screen
 export const Login = props => {
     const username = useRef()
     const existsDialog = useRef()
     const history = useHistory()
 
+    //Checks for existing user
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?username=${username.current.value}`)
             .then(response => response.json())
             .then(user => user.length ? user[0] : false)
     }
+
+    //If username exists in the database, push the user through to the main page
     const handleLogin = (e) => {
         e.preventDefault()
 
@@ -25,6 +29,7 @@ export const Login = props => {
                 }
             })
     }
+    //Log-in render
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existsDialog}>
