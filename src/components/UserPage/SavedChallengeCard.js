@@ -14,7 +14,6 @@ export const SavedChallengeCard = ({challenge, deleteBtn}) => {
             <h4 className="game__title"> <Link to={`/game-${challenge.challenge.gameId}`}>
             {challenge.challenge.game}
             </Link></h4>
-            <div className="challenge__poster">Posted by: {challenge.user.username}</div>
             <div className="challenge__description">{challenge.challenge.description}</div>
             <button className="removeChallenge" onClick={() => deleteBtn(challenge)}>Remove From Saved</button>
         </section>

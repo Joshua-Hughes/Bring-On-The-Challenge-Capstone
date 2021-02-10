@@ -11,6 +11,12 @@
       "name": "Gho Getter",
       "username": "MiddelMan",
       "id": 2
+    },
+    {
+      "email": "gfd@yaho.con",
+      "name": "Joshua",
+      "username": "Biggs",
+      "id": 3
     }
   ],
   "challenges": [
@@ -109,16 +115,28 @@
       "id": 1
     },
     {
-      "userId": 1,
-      "challengeId": 4,
+      "userId": 2,
+      "challengeId": 5,
       "isComplete": false,
-      "id": 3
+      "id": 7
     },
     {
       "userId": 1,
       "challengeId": 6,
       "isComplete": false,
-      "id": 6
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "challengeId": 6,
+      "isComplete": false,
+      "id": 13
+    },
+    {
+      "userId": 3,
+      "challengeId": 4,
+      "isComplete": false,
+      "id": 14
     }
   ]
 }

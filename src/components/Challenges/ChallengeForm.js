@@ -52,10 +52,11 @@ export const ChallengeForm = () => {
                 ratingId: parseInt(challenge.ratingId),
                 description: challenge.description
             })
-                .then(window.alert("Challenge saved, why not another?"))
-                .then(challenge.title = "")
-                .then(challenge.ratingId = 0)
-                .then(challenge.description = "")
+                .then(() => setChallenge, 
+                window.alert("Challenge saved, why not another?"),
+                challenge.title = "",
+                challenge.ratingid = 0,
+                challenge.description = "")
         }
     }
 
