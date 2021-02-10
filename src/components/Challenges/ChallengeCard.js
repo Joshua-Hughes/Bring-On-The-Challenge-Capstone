@@ -23,6 +23,7 @@ export const ChallengeCard = ({ challenge, game }) => {
                 challengeId: challenge.id,
                 isComplete: false
             })
+            window.alert("Challenge Saved!")
         }
 
     }
@@ -53,10 +54,7 @@ export const ChallengeCard = ({ challenge, game }) => {
                 <div className="challenge__rating"> Difficulty: {challenge.rating.rank}</div>
                 <div className="challenge__poster"> Posted By: {challenge.user.username}</div>
                 <div className="challenge__description">{challenge.description}</div>
-                <button id={challenge.id} onClick={() => {
-                    handleChallengeSave()
-                    savedSuccess.current.showModal()
-                }}>Save</button>
+                <button id={challenge.id} onClick={handleChallengeSave}>Save</button>
             </section>
         )
     } else {

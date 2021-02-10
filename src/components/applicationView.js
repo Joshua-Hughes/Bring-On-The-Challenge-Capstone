@@ -5,6 +5,7 @@ import { GamesList } from "./SearchPage/GamesList"
 import { GameDetails } from "./SearchPage/GameDetails"
 import { ChallengeProvider } from "./Challenges/ChallengeProvider"
 import { SavedChallengeProvider } from "./Challenges/SavedChallengeProvider"
+import { UserDetails } from "./UserPage/UserPage"
 
 export const ApplicationViews = () => {
     return (
@@ -17,6 +18,10 @@ export const ApplicationViews = () => {
 
                 <Route exact path="/game-:gameId(\d+)">
                     <GameDetails />
+                </Route>
+
+                <Route path="/userPage">
+                    <UserDetails />
                 </Route>
                 </SavedChallengeProvider>
             </ChallengeProvider>

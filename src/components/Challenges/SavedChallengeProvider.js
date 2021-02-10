@@ -19,12 +19,18 @@ export const SavedChallengeProvider = (props) => {
     const getSavedChallenges = () => {
         return fetch("http://localhost:8088/savedChallenges?_expand=user&_expand=challenge")
             .then(response => response.json())
-            .then(setSavedChallenges)
+    }
+
+    const deleteSavedChallenge = (challengeId) => {
+        return fetch(`http://localhost:8088/savedChallenges/${challengeId}`, {
+            method: "DELETE"
+        })
+            .then(getSavedChallenges)
     }
 
     return (
         <SavedChallengeContext.Provider value={{
-            savedChallenges, saveChallenge, getSavedChallenges
+            savedChallenges, saveChallenge, getSavedChallenges, deleteSavedChallenge
         }}>
             {props.children}
         </SavedChallengeContext.Provider>

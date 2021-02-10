@@ -52,58 +52,58 @@ export const ChallengeForm = () => {
                 ratingId: parseInt(challenge.ratingId),
                 description: challenge.description
             })
-            .then(refreshPage())
+                .then(refreshPage())
         }
     }
 
-        useEffect(() => {
-            getGameById(gameId)
-                .then((response) => {
-                    setGame(response)
-                    return getRatings()
-                        .then(setRatings)
-                })
-        }, [])
+    useEffect(() => {
+        getGameById(gameId)
+            .then((response) => {
+                setGame(response)
+                return getRatings()
+                    .then(setRatings)
+            })
+    }, [])
 
-        return (
-            <form className="challengeForm">
-                <h2 className="challengeForm__title">{challengeId ? "Edit Challenge" : "Add Challenge"}</h2>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="challengeTitle">Title </label>
-                        <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control"
-                            placeholder="Title"
-                            onChange={handleControlledInputChange}
-                            value={challenge.title} />
-                    </div>
-                </fieldset>
+    return (
+        <form className="challengeForm">
+            <h2 className="challengeForm__title">{challengeId ? "Edit Challenge" : "Add Challenge"}</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="challengeTitle">Title </label>
+                    <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control"
+                        placeholder="Title"
+                        onChange={handleControlledInputChange}
+                        value={challenge.title} />
+                </div>
+            </fieldset>
 
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="rating">Difficulty </label>
-                        <select value={challenge.ratingId} name="ratingId" id="challengeRating" className="form-control" onChange={handleControlledInputChange}>
-                            <option value="0">Select a rating</option>
-                            {ratings?.map(l => (
-                                <option key={l.id} value={l.id}>
-                                    {l.rank}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="description">Description</label>
-                        <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description} />
-                    </div>
-                </fieldset>
-                <button className="btn btn-primary"
-                    onClick={event => {
-                        event.preventDefault() // Prevent browser from submitting the form and refreshing the page
-                        handleSaveChallenge()
-                    }}
-                >
-                    {challengeId ? <>Save Challenge</> : <>Add Challenge</>}</button>
-            </form>
-        )
-    }
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="rating">Difficulty </label>
+                    <select value={challenge.ratingId} name="ratingId" id="challengeRating" className="form-control" onChange={handleControlledInputChange}>
+                        <option value="0">Select a rating</option>
+                        {ratings?.map(l => (
+                            <option key={l.id} value={l.id}>
+                                {l.rank}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
+                    <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description} />
+                </div>
+            </fieldset>
+            <button className="btn btn-primary"
+                onClick={event => {
+                    event.preventDefault() // Prevent browser from submitting the form and refreshing the page
+                    handleSaveChallenge()
+                }}
+            >
+                {challengeId ? <>Save Challenge</> : <>Add Challenge</>}</button>
+        </form>
+    )
+}

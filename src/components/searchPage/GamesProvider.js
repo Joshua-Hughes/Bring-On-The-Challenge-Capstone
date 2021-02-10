@@ -13,7 +13,7 @@ export const GamesProvider = (props) => {
             .then(response => response.json())
             .then(setGames)
     }
-    
+
     const getGameById = (id) => {
         return fetch(`https://api.rawg.io/api/games/${id}?key=${settings.rawgKey}`)
             .then(response => response.json())
@@ -21,27 +21,27 @@ export const GamesProvider = (props) => {
 
     const nextList = () => {
         if (games.next !== null) {
-        fetch(`${games?.next}`)
-            .then(response => response.json())
-            .then(setGames)
+            fetch(`${games?.next}`)
+                .then(response => response.json())
+                .then(setGames)
         }
     }
 
     const prevList = () => {
         if (games.previous !== null) {
-        fetch(`${games?.previous}`)
-            .then(response => response.json())
-            .then(setGames)
+            fetch(`${games?.previous}`)
+                .then(response => response.json())
+                .then(setGames)
         }
     }
 
     const searchList = (term) => {
         if (term != "") {
-          return fetch(`https://api.rawg.io/api/games?search=${term}&key=${settings.rawgKey}`)
-            .then(response => response.json())
-            .then(setGames)
+            return fetch(`https://api.rawg.io/api/games?search=${term}&key=${settings.rawgKey}`)
+                .then(response => response.json())
+                .then(setGames)
         }
-      }
+    }
 
     return (
         <GameContext.Provider value={{

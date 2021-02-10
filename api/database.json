@@ -107,6 +107,12 @@
       "challengeId": 4,
       "isComplete": false,
       "id": 1
+    },
+    {
+      "userId": 1,
+      "challengeId": 6,
+      "isComplete": false,
+      "id": 3
     }
   ]
 }

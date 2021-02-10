@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import { GameContext } from "./GamesProvider"
 import { GameCard } from "./GameCard"
 
@@ -26,15 +27,18 @@ export const GamesList = () => {
 
     if (searchTerm === "") {
       getGames()
-      .then(setGamesList)
+        .then(setGamesList)
     } else {
       searchList(searchTerm)
-      .then(setGamesList)
+        .then(setGamesList)
     }
-   }
+  }
 
   return (
     <div className="games">
+      <Link to={`/userPage`}>
+        View saved challenges!
+      </Link>
       <fieldset>
         <input type="text" id="title" autoFocus className="form-search" placeholder="Title" />
         <button className="search-button" onClick={handleClickSearchList}>Search Games</button>
