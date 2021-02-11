@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import { GameContext } from "./GamesProvider"
 import { GameCard } from "./GameCard"
+import "./Search.css";
 
 export const GamesList = () => {
 
@@ -21,7 +22,7 @@ export const GamesList = () => {
   const scrollToRef = (ref) =>
     window.scrollTo(0, ref.current)
 
-    //handles the search fuction for the list of games
+  //handles the search fuction for the list of games
   const handleClickSearchList = (event) => {
     event.preventDefault()
 
@@ -47,11 +48,13 @@ export const GamesList = () => {
         <button className="search-button" onClick={handleClickSearchList}>Search Games</button>
       </fieldset>
       <h1 className="title">Games</h1>
-      {
-        games.results?.map(game => {
-          return <GameCard key={game.id} game={game} />
-        })
-      }
+      <div className="gamesList">
+        {
+          games.results?.map(game => {
+            return <GameCard key={game.id} game={game} />
+          })
+        }
+      </div>
       <button className="prevPage" onClick={prevList}>
         Previous Page
       </button>

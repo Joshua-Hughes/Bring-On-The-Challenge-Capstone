@@ -45,10 +45,22 @@ export const ChallengeProvider = (props) => {
             .then(getChallenges)
     }
 
+    //allows for editing a challenge
+    const updateChallenge = challenge => {
+        return fetch(`http://localhost:8088/challenges/${challenge.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(challenge)
+        })
+            .then(getChallenges)
+    }
+
     //returns all provider functions
     return (
         <ChallengeContext.Provider value={{
-            challenges, ratings, getChallenges, getRatings, addChallenge, deleteChallenge, getChallengeById
+            challenges, ratings, getChallenges, getRatings, addChallenge, deleteChallenge, getChallengeById, updateChallenge
         }}>
             {props.children}
         </ChallengeContext.Provider>

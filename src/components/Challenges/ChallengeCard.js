@@ -1,10 +1,12 @@
 import React, { useContext, useRef } from "react"
 import { ChallengeContext } from "./ChallengeProvider"
 import { SavedChallengeContext } from "./SavedChallengeProvider"
-
+import { ChallengeForm } from "../Challenges/ChallengeForm"
 
 //Renders a card for each existing challenge per game
 export const ChallengeCard = ({ challenge, game }) => {
+
+    const newChallengeForm = useRef()
 
     const { deleteChallenge } = useContext(ChallengeContext)
 
@@ -23,7 +25,9 @@ export const ChallengeCard = ({ challenge, game }) => {
                 challengeId: challenge.id,
                 isComplete: false
             })
-            window.alert("Challenge Saved!")
+            .then(() => {
+                window.alert("Challenge Saved!")
+            })
         }
 
     }
@@ -38,6 +42,11 @@ export const ChallengeCard = ({ challenge, game }) => {
                 <div className="challenge__poster"> Posted By: {challenge.user.username}</div>
                 <div className="challenge__description">{challenge.description}</div>
                 <button id={challenge.id} onClick={handleChallengeDelete}>Delete</button>
+                <dialog className="dialog--form" ref={newChallengeForm}>
+                    <ChallengeForm />
+                    <button className="closeButton" onClick={e => newChallengeForm.current.close()}>Close</button>
+                </dialog>
+                <button className={"editBtn"} id={challenge.id} onClick={e => newChallengeForm.current.showModal()}>Edit</button>
                 <button id={challenge.id} onClick={handleChallengeSave}>Save</button>
             </section>
         )

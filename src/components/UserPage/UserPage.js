@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { SavedChallengeContext } from "../Challenges/SavedChallengeProvider"
 import { SavedChallengeCard } from "./SavedChallengeCard"
 import { Link } from 'react-router-dom'
+import "./SavedChallenge.css"
 
 export const UserDetails = () => {
 

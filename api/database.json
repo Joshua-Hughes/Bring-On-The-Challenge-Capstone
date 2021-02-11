@@ -137,6 +137,18 @@
       "challengeId": 4,
       "isComplete": false,
       "id": 14
+    },
+    {
+      "userId": 1,
+      "challengeId": 5,
+      "isComplete": false,
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "challengeId": 5,
+      "isComplete": false,
+      "id": 16
     }
   ]
 }

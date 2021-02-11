@@ -11,7 +11,7 @@ export const SavedChallengeCard = ({challenge, deleteBtn}) => {
     return (
         <section className="challenge">
             <h3 className="challenge__title">{challenge.challenge.title}</h3>
-            <h4 className="game__title"> <Link to={`/game-${challenge.challenge.gameId}`}>
+            <h4 className="game__ttitle"> <Link to={`/game-${challenge.challenge.gameId}`}>
             {challenge.challenge.game}
             </Link></h4>
             <div className="challenge__description">{challenge.challenge.description}</div>

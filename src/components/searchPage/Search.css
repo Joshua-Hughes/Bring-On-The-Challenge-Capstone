@@ -1,0 +1,20 @@
+html {
+    background-color: brown;
+}
+
+.gamesList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.game {
+    border: 1px solid black;
+}
+
+.game__title, .game__description, .game__platforms, .game__releaseDate, .game__rating, .game__developers, .game__genres, .game__tags, .game__publishers {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}

@@ -3,9 +3,12 @@ import { GameContext } from "../SearchPage/GamesProvider"
 import { ChallengeContext } from "./ChallengeProvider"
 import { useParams } from 'react-router-dom'
 
+
+
 //Renders the form for submitting challenges
 export const ChallengeForm = () => {
-    const { addChallenge, getRatings } = useContext(ChallengeContext)
+
+    const { addChallenge, getRatings, updateChallenge, getChallengeById } = useContext(ChallengeContext)
 
     const { getGameById } = useContext(GameContext)
 
@@ -26,8 +29,6 @@ export const ChallengeForm = () => {
 
     const [ratings, setRatings] = useState([])
 
-    const { challengeId } = useParams()
-
     const { gameId } = useParams()
 
     //handles the state change when typing
@@ -37,11 +38,25 @@ export const ChallengeForm = () => {
         setChallenge(newChallenge)
     }
 
-    //handles the saving of challenges
-    const handleSaveChallenge = () => {
+    //handles the saving and updating of challenges
+    const handleSaveChallenge = (button) => {
         if (challenge.title === "" || challenge.ratingId === 0 || challenge.description === "") {
             window.alert("Please fill in all fields.")
+            console.log(button)
         } else {
+            if (button) {
+                updateChallenge({
+                    id: button,
+                    userId: parseInt(sessionStorage.site_user),
+                    gameId: parseInt(games.id),
+                    game: games.name,
+                    title: challenge.title,
+                    ratingId: parseInt(challenge.ratingId),
+                    description: challenge.description
+                })
+                .then(() => setChallenge,
+                window.alert("Challenge Updated. Any other changes?"))
+            } else {
 
             addChallenge({
                 id: challenge.id,
@@ -52,12 +67,12 @@ export const ChallengeForm = () => {
                 ratingId: parseInt(challenge.ratingId),
                 description: challenge.description
             })
-                .then(() => setChallenge, 
-                window.alert("Challenge saved, why not another?"),
-                challenge.title = "",
-                challenge.ratingid = 0,
-                challenge.description = "")
-        }
+                .then(() => setChallenge,
+                    window.alert("Challenge saved, why not another?"),
+                    challenge.title = "",
+                    challenge.ratingid = 0,
+                    challenge.description = "")
+        }}
     }
 
     //fetches the currently viewed game and the list of ratings
@@ -73,11 +88,11 @@ export const ChallengeForm = () => {
     //renders the form
     return (
         <form className="challengeForm">
-            <h2 className="challengeForm__title">{challengeId ? "Edit Challenge" : "Add Challenge"}</h2>
+            <h2 className="challengeForm__title">{document.querySelector(".editBtn")?.id ? "Edit Challenge" : "Add Challenge"}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="challengeTitle">Title </label>
-                    <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control" placeholder="Title" onChange={handleControlledInputChange} value={challenge.title}/>
+                    <input type="text" id="challengeTitle" name="title" required autoFocus className="form-control" placeholder="Title" onChange={handleControlledInputChange} value={challenge.title} />
                 </div>
             </fieldset>
 
@@ -97,16 +112,16 @@ export const ChallengeForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description}  />
+                    <textarea name="description" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Description" value={challenge.description} />
                 </div>
             </fieldset>
             <button className="btn btn-primary"
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form and refreshing the page
-                    handleSaveChallenge()
+                    handleSaveChallenge(document.querySelector(".editBtn"))
                 }}
             >
-                {challengeId ? <>Save Challenge</> : <>Add Challenge</>}</button>
+                {document.querySelector(".editBtn")?.id ? <>Update Challenge</> : <>Add Challenge</>}</button>
         </form>
     )
 }
