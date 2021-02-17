@@ -48,15 +48,6 @@
       "description": "Complete any stage with a 100% absorption rate."
     },
     {
-      "id": 4,
-      "userId": 1,
-      "gameId": 5390,
-      "game": "Burnout Paradise",
-      "ratingId": 2,
-      "title": "The Gang is Back in Town",
-      "description": "Be on the winning robbers team in a Cops and Robbers Game."
-    },
-    {
       "id": 5,
       "userId": 2,
       "gameId": 5390,
@@ -73,6 +64,15 @@
       "title": "Defeat Warmech",
       "ratingId": 5,
       "description": "Warmech can be found on the top floor of the Floating Castle, just before you find Tiamat."
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "gameId": 5390,
+      "game": "Burnout Paradise",
+      "title": "gcvbj",
+      "ratingId": 2,
+      "description": "gfvhjmbn"
     }
   ],
   "ratings": [
@@ -110,12 +110,6 @@
     },
     {
       "userId": 2,
-      "challengeId": 4,
-      "isComplete": false,
-      "id": 1
-    },
-    {
-      "userId": 2,
       "challengeId": 5,
       "isComplete": false,
       "id": 7
@@ -133,22 +127,10 @@
       "id": 13
     },
     {
-      "userId": 3,
-      "challengeId": 4,
-      "isComplete": false,
-      "id": 14
-    },
-    {
       "userId": 1,
       "challengeId": 5,
       "isComplete": false,
       "id": 15
-    },
-    {
-      "userId": 1,
-      "challengeId": 5,
-      "isComplete": false,
-      "id": 16
     }
   ]
 }

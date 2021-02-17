@@ -75,7 +75,7 @@ export const GameDetails = () => {
                     <ChallengeForm />
                     <button className="closeButton" onClick={e => newChallengeForm.current.close()}>Close</button>
                 </dialog>
-                <button className="addChallenge" id={game.id} onClick={e => newChallengeForm.current.showModal()}>Add Challenge</button>
+                <button className="addChallenge" onClick={e => newChallengeForm.current.showModal()}>Add Challenge</button>
             </article>
             {challenges.map((item) => {
                 return <ChallengeCard key={item.id} challenge={item} game={game} modal={newChallengeForm}/>

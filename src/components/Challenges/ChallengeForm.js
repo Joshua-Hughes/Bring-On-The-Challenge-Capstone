@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 //Renders the form for submitting challenges
 export const ChallengeForm = () => {
 
-    const { addChallenge, getRatings, updateChallenge, getChallengeById } = useContext(ChallengeContext)
+    const { addChallenge, getRatings } = useContext(ChallengeContext)
 
     const { getGameById } = useContext(GameContext)
 
@@ -42,21 +42,7 @@ export const ChallengeForm = () => {
     const handleSaveChallenge = (button) => {
         if (challenge.title === "" || challenge.ratingId === 0 || challenge.description === "") {
             window.alert("Please fill in all fields.")
-            console.log(button)
         } else {
-            if (button) {
-                updateChallenge({
-                    id: button,
-                    userId: parseInt(sessionStorage.site_user),
-                    gameId: parseInt(games.id),
-                    game: games.name,
-                    title: challenge.title,
-                    ratingId: parseInt(challenge.ratingId),
-                    description: challenge.description
-                })
-                .then(() => setChallenge,
-                window.alert("Challenge Updated. Any other changes?"))
-            } else {
 
             addChallenge({
                 id: challenge.id,
@@ -72,7 +58,7 @@ export const ChallengeForm = () => {
                     challenge.title = "",
                     challenge.ratingid = 0,
                     challenge.description = "")
-        }}
+        }
     }
 
     //fetches the currently viewed game and the list of ratings
@@ -88,7 +74,7 @@ export const ChallengeForm = () => {
     //renders the form
     return (
         <form className="challengeForm">
-            <h2 className="challengeForm__title">{document.querySelector(".editBtn")?.id ? "Edit Challenge" : "Add Challenge"}</h2>
+            <h2 className="challengeForm__title">Add Challenge</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="challengeTitle">Title </label>
@@ -118,10 +104,10 @@ export const ChallengeForm = () => {
             <button className="btn btn-primary"
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form and refreshing the page
-                    handleSaveChallenge(document.querySelector(".editBtn"))
+                    handleSaveChallenge(document.querySelector(".editBtn")?.id)
                 }}
             >
-                {document.querySelector(".editBtn")?.id ? <>Update Challenge</> : <>Add Challenge</>}</button>
+                Add Challenge</button>
         </form>
     )
 }
