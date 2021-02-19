@@ -1,7 +1,6 @@
 import React, { useContext, createRef } from "react"
 import { ChallengeContext } from "./ChallengeProvider"
 import { SavedChallengeContext } from "./SavedChallengeProvider"
-import { ChallengeUpdate } from "./EditChallenge"
 
 //Renders a card for each existing challenge per game
 export const ChallengeCard = ({ challenge, game }) => {

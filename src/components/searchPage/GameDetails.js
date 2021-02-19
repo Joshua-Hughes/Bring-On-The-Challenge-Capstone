@@ -51,15 +51,17 @@ export const GameDetails = () => {
     //renders the information page for the chosen game
     return (
         <section className="game">
+            <div class="links">
             <Link to="/games">
                 Go back to the list!
             </Link>
             <Link to={`/userPage`}>
                 View saved challenges!
             </Link>
+            </div>
             <article className="game__information">
                 <img src={game.background_image} width="500" alt="No image available"></img>
-                <h3 className="game__title">Title: {game.name}</h3>
+                <h1 className="game__title">{game.name}</h1>
                 <div className="game__description" dangerouslySetInnerHTML={{ __html: game.description }} />
                 <ul className="game__platforms"> Platforms:{gamePlatforms}</ul>
                 <div className="game__releaseDate">Released: {game.released}</div>

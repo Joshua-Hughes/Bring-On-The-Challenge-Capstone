@@ -8,7 +8,7 @@ export const GamesProvider = (props) => {
 
     //fetches all games
     const getGames = () => {
-        return fetch(`https://api.rawg.io/api/games?key=${settings.rawgKey}`)
+        return fetch(`https://api.rawg.io/api/games?page_size=50&key=${settings.rawgKey}`)
             .then(response => response.json())
             .then(setGames)
     }
@@ -40,7 +40,7 @@ export const GamesProvider = (props) => {
     //allow for the searching of games through the list
     const searchList = (term) => {
         if (term != "") {
-            return fetch(`https://api.rawg.io/api/games?search=${term}&key=${settings.rawgKey}`)
+            return fetch(`https://api.rawg.io/api/games?search=${term}&page_size=50&key=${settings.rawgKey}`)
                 .then(response => response.json())
                 .then(setGames)
         }

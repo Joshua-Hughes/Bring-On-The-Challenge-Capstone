@@ -1,20 +1,30 @@
-html {
-    background-color: brown;
-}
-
 .gamesList {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .game {
     border: 1px solid black;
+    margin-bottom: 2%;
 }
 
 .game__title, .game__description, .game__platforms, .game__releaseDate, .game__rating, .game__developers, .game__genres, .game__tags, .game__publishers {
+    text-align: center;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+a {
+    display: flex;
+    justify-content: space-around;
 }

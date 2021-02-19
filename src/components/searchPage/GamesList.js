@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { GameContext } from "./GamesProvider"
 import { GameCard } from "./GameCard"
 import "./Search.css";
+import 'react-bulma-components/dist/react-bulma-components.min.css'
 
 export const GamesList = () => {
 
